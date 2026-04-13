@@ -73,7 +73,8 @@ void Draw()
         cout << " ";
     }
     cout << endl;
-    cout << "Score: " << score;
+    cout << "Score: " << score << "\n";
+    cout << "Controls: WASD";
 }
 
 void Input() 
