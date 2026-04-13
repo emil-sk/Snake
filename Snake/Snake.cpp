@@ -16,7 +16,7 @@ int xSnakePositions[200];
 int ySnakePositions[200];
 int tailLength;
 
-void Draw() 
+void Draw() // Draws the whole screen, including walls, fruit, snake and text
 {
     system("cls");
     for (int i = 0; i < width; i++)
@@ -77,7 +77,7 @@ void Draw()
     cout << "Controls: WASD";
 }
 
-void Input() 
+void Input() // Handle input and tail positions
 {
     int prevX = xSnakePositions[0];
     int prevY = ySnakePositions[0];
@@ -92,7 +92,7 @@ void Input()
         prevX = prev2x;
         prevY = prev2y;
     }
-    if (_kbhit())
+    if (_kbhit()) // Key pressed
     {
         switch (_getch())
         {
@@ -114,7 +114,7 @@ void Input()
     }
 }
 
-void Movement() 
+void Movement()  // Moves sanke
 {
         switch (dir)
         {
@@ -132,12 +132,12 @@ void Movement()
             break;
         }
 
-    if (xSnake < 0 || xSnake >= width - 2 || ySnake < 0 || ySnake >= height) 
+    if (xSnake < 0 || xSnake >= width - 2 || ySnake < 0 || ySnake >= height) // If snake hits a wall, game over
     {
         gameOver = true;
     }
 
-    if (xSnake == xFruit && ySnake == yFruit) 
+    if (xSnake == xFruit && ySnake == yFruit) // Eat fruit if sanke head touched it. grow in length and get 1 point
     {
         score++;
         tailLength++;
@@ -145,7 +145,7 @@ void Movement()
         yFruit = rand() % (height-2);
     }
 
-    for (int i = 0; i < tailLength; i++) 
+    for (int i = 0; i < tailLength; i++) // Check if snake eats itself. if so, game over
     {
         if (xSnake == xSnakePositions[i] && ySnake == ySnakePositions[i]) 
         {
